@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// INHERITANCE
 public class WallRed : Wall
 {
     [SerializeField] float force = 20f;
@@ -19,6 +20,7 @@ public class WallRed : Wall
         destroy();
     }
 
+    // POLYMORPHISM
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))

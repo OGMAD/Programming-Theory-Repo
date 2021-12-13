@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+// INHERITANCE
 public class WallYellow : Wall
 {
     [SerializeField] float force = 20f;
@@ -22,14 +23,17 @@ public class WallYellow : Wall
         destroy();
     }
 
+    // ABSTRACTION
     void ScoreDown()
     {
         scoreText = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
 
+        // ENCAPSULATION
         Score.SetScore(Score.GetScore() - 5);
         scoreText.text = "Score: " + Score.GetScore();
     }
 
+    // POLYMORPHISM
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
