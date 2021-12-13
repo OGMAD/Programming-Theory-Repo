@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WallRed : Wall
 {
@@ -8,12 +9,21 @@ public class WallRed : Wall
     // Start is called before the first frame update
     void Start()
     {
-        go(force);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        go(force);
         destroy();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        }
     }
 }

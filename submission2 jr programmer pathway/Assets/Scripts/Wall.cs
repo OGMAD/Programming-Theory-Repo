@@ -1,32 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Wall : MonoBehaviour
 {
-    private Rigidbody wallRb;
+    Vector3 offset = new Vector3(0, 0, -1);
     private float bound = -5.0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    protected int score = 0;
 
     public void go(float force)
     {
-        wallRb = GetComponent<Rigidbody>();
-        wallRb.AddForce(-Vector3.forward * force, ForceMode.VelocityChange);
+        transform.position = transform.position + offset * Time.deltaTime * force;
     }
 
     public void destroy()
     {
-        if (wallRb.position.z < bound)
+        if (transform.position.z < bound)
         {
             Destroy(gameObject);
         }
